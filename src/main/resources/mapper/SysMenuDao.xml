@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jerry.springboot_redis_shiro.core.dao.SysMenuDao">
+    <resultMap id="sysMenuMap" type="com.jerry.springboot_redis_shiro.core.entity.SysMenuEntity">
+        <result property="menuId" column="menu_id"/>
+        <result property="name" column="name"/>
+        <result property="perms" column="perms"/>
+    </resultMap>
+    <select id="selectSysMenuByRoleId" parameterType="long" resultType="com.jerry.springboot_redis_shiro.core.entity.SysMenuEntity">
+        select sm.* from sys_menu sm
+        left join sys_role_menu se on sm.menu_id=sm.se.menu_id
+        where se.role_id=#{roleId}
+    </select>
+</mapper>
