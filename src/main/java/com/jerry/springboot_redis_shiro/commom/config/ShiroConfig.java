@@ -1,6 +1,5 @@
 package com.jerry.springboot_redis_shiro.commom.config;
 
-import com.baomidou.mybatisplus.extension.api.R;
 import com.jerry.springboot_redis_shiro.commom.shiro.ShiroRealm;
 import com.jerry.springboot_redis_shiro.commom.shiro.ShiroSessionIdGenerator;
 import com.jerry.springboot_redis_shiro.commom.shiro.ShiroSessionManager;
@@ -17,7 +16,6 @@ import org.crazycake.shiro.RedisSessionDAO;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -101,13 +99,14 @@ public class ShiroConfig {
     {
         return new ShiroSessionIdGenerator();
     }
+
     @Bean
     public RedisSessionDAO redisSessionDAO()
     {
         RedisSessionDAO redisSessionDAO=new RedisSessionDAO();
         redisSessionDAO.setRedisManager(redisManager());
         redisSessionDAO.setSessionIdGenerator(shiroSessionIdGenerator());
-        redisSessionDAO().setKeyPrefix(SESSION_KEY);
+        redisSessionDAO.setKeyPrefix(SESSION_KEY);
         redisSessionDAO.setExpire(EXPIRE);
         return redisSessionDAO;
     }

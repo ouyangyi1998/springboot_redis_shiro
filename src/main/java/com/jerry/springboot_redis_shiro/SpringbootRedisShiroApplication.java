@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.mybatis.spring.annotation.MapperScan;
 
 @SpringBootApplication
-@MapperScan(basePackages = {"com.jerry.core.dao"})
+@MapperScan(basePackages = {"com.jerry.springboot_redis_shiro.core.dao"})
 public class SpringbootRedisShiroApplication {
 
     public static void main(String[] args)
